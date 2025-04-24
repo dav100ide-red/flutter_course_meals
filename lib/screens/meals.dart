@@ -19,10 +19,11 @@ class MealsScreen extends StatelessWidget {
   void selectMeal(BuildContext context, Meal meal) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => MealDetailsScreen(
-          meal: meal,
-          onToggleFavorite: onToggleFavorite,
-        ),
+        builder:
+            (ctx) => MealDetailsScreen(
+              meal: meal,
+              onToggleFavorite: onToggleFavorite,
+            ),
       ),
     );
   }
@@ -36,15 +37,15 @@ class MealsScreen extends StatelessWidget {
           Text(
             'Uh oh ... nothing here!',
             style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
           ),
           const SizedBox(height: 16),
           Text(
             'Try selecting a different category!',
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.onBackground,
-                ),
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
           ),
         ],
       ),
@@ -53,12 +54,13 @@ class MealsScreen extends StatelessWidget {
     if (meals.isNotEmpty) {
       content = ListView.builder(
         itemCount: meals.length,
-        itemBuilder: (ctx, index) => MealItem(
-          meal: meals[index],
-          onSelectMeal: (meal) {
-            selectMeal(context, meal);
-          },
-        ),
+        itemBuilder:
+            (ctx, index) => MealItem(
+              meal: meals[index],
+              onSelectMeal: (meal) {
+                selectMeal(context, meal);
+              },
+            ),
       );
     }
 
@@ -66,11 +68,6 @@ class MealsScreen extends StatelessWidget {
       return content;
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title!),
-      ),
-      body: content,
-    );
+    return Scaffold(appBar: AppBar(title: Text(title!)), body: content);
   }
 }
